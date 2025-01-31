@@ -17,7 +17,11 @@ async function startServer () {
         
 
 
-        app.use(cors());        
+        app.use(cors({
+            origin: 'http://localhost:5173', // Permite apenas o frontend local
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+            allowedHeaders: ['Content-Type', 'Authorization']
+        }));        
 
         app.use(express.json())
         app.use('/', authRotes)
