@@ -27,7 +27,10 @@ async function startServer () {
         app.use('/', authRotes)
         app.use('/users', userRoutes)
         app.use('/postos', postoRoutes)    
-        app.use('/bikes', bikeRoutes);    
+        app.use('/bikes', bikeRoutes)
+        app.get('/status', (req, res) => {
+            res.status(200).json({ status: 'OK' });
+        });    
         
         app.listen(port, () => {
             console.log(`Servidor escutanto na porta ${port} em http://localhost:${port}`)
